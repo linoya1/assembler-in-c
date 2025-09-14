@@ -1,0 +1,34 @@
+f: 
+    cmp #8, r1
+    cmp #8
+    cmp
+    add *r5, f
+    add *r5, #-996
+    add *r5
+    add
+    lea f, *f
+    lea r3, #8
+    lea r3
+    lea
+    not r1
+    not #1
+    not
+    not r1, *r1
+    jmp f
+    jmp *r1
+    jmp r7
+    jmp #-100
+    jmp #-100, #4
+    stop
+    stop #7
+    stop f, *r1
+    red f
+    red #11
+    red #11, r1
+    red
+    prn r4
+    prn
+    prn r6, *r6
+    cmp fg, a
+    cmp ad, f
+    cmp f, ad

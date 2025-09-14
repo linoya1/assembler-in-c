@@ -1,0 +1,5 @@
+	inc r2
+	mov A, r1
+dec r2
+	inc r2
+	mov A, r1

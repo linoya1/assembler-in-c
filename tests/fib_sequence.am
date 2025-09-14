@@ -1,0 +1,23 @@
+.entry START
+.entry FIBONACCI
+.extern PRINTLABEL
+START:    mov #10, r0
+          jsr FIBONACCI
+          stop
+          prn r4
+          lea PRINTLABEL, r4
+FIBONACCI: clr r1
+          mov #1, r2
+          clr r3
+          clr r4
+          jmp FIBLOOP
+FIBLOOP:  cmp r3, r0
+          bne ENDLOOP
+          prn r1
+          add r1, r2
+          mov r2, r4
+          mov r4, r2
+          sub r1, r2
+          add #1, r3
+          jmp FIBLOOP
+ENDLOOP:  rts

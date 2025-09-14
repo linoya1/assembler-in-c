@@ -1,0 +1,162 @@
+.extern funcPrimary
+
+.extern extLabelA
+.entry loopMain
+
+startPoint:  mov r1, *r2
+             prn strOne
+             lea labelA, r3
+
+             sub r3, numOne
+             jsr funcPrimary
+
+             add r1, *r2
+
+             cmp r3, #-15
+             bne callFunc
+             prn r2
+             clr r6
+             mov r7, *r4
+             sub strTwo, lblTwo
+             add r1, *r3
+             mov numOne, r5
+             jsr funcTertiary
+             stop
+
+strOne:      .string "Testing initial string."
+numOne:      .data 2, -2, 3760, -3760
+
+.entry callFunc
+.extern extLabelB
+
+callFunc:    lea strTwo, *r6
+             inc *r6
+
+             mov *r6, numOne
+             sub r1, *r4
+             cmp r3, #-6
+             bne loopMain
+lblThree:    add r7, *r6
+
+             clr keyVar
+             sub lblThree, *r2
+             jmp stopFinal
+
+strTwo:      .string "Mixed test string with instructions."
+keyVar:      .data 12, 25, -35, 45, 55
+
+loopMain:    prn #48
+             lea strThree, *r5
+             sub *r4, r5
+             jsr funcSecondary
+             inc r1
+             inc r1
+             cmp r2, #-20
+             bne funcPrimary
+             jsr funcSecondary
+             dec r3
+             jmp loopMain
+
+.entry funcTertiary
+
+funcLocal:   clr r2
+             lea strOne, r3
+             add r4, r3
+             jsr funcTertiary
+             prn *r1
+             add r1, *r2
+             cmp r3, #-15
+             bne callFunc
+
+.entry funcLocal
+
+lblFive:     .data 102, 205, 308
+
+.extern extLabel
+.extern extLabelD
+.entry funcSecondaryLocal
+
+funcSecondaryLocal: clr r5
+                    mov r1, r6
+                    add r2, *r3
+                    sub r4, r5
+                    jsr funcLocal
+                    sub *r4, r5
+funcSecondary: jsr funcSecondary
+               inc r1
+
+               mov r7, r6
+
+               prn lblFour
+               stop
+
+labelA:       .data 250, -500, 1020, -2040
+
+strThree:     .string "String within data section."
+funcTertiaryLocal: jsr funcLocal
+                   prn *r6
+                   clr r2
+                   mov r3, lblSix
+                   sub r1, r2
+                   cmp r7, #-30
+                   bne funcSecondaryLocal
+                   mov r2, *r3
+                   prn r4
+                   clr *r5
+                   stop
+
+lblSix:      mov r1, *r3
+             add r2, r3
+             sub r4, *r5
+             cmp r6, r7
+             bne funcPrimary
+             jsr funcSecondary
+             prn r7
+
+.extern extLabelE
+
+             mov r2, lblTwo
+             cmp r3, r4
+             add r5, r6
+             sub r7, r1
+             jsr funcLocal
+funcTertiary: dec r2
+              prn *r3
+              mov labelA, r5
+              jsr funcTertiaryLocal
+              jmp loopMain
+              prn r6
+
+lblTwo:      .data 5550, -5605, 5705, -5805, 5905
+
+.extern extLabelF
+.entry funcSecondary
+
+strFour:     prn lblTwo
+             add r3, *r4
+
+lblFour:     mov r2, *r5
+             sub r7, r6
+             prn r6
+
+.extern extLabelG
+.extern funcQuaternary
+
+             add r1, *r2
+             cmp r3, #-15
+             bne callFunc
+             mov r5, lblFour
+             add r2, r7
+             prn strFive
+             sub r6, *r3
+             jmp funcLocal
+
+strFive:     .string "Final string located at the end."
+
+.entry stopFinal
+
+.extern extFinalLabel
+
+stopFinal:   stop
+             prn r7
+
