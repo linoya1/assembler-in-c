@@ -106,6 +106,6 @@ After running:
 
 ## 📜 License
 
-MIT License (or another license of your choice).
+All rights reserved. This project was submitted as part of an academic course (20465, Open University of Israel).
 
 ---
