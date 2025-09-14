@@ -117,5 +117,6 @@ Example (adjust arguments/paths as needed):
 - This code is an academic project. Please credit appropriately if you reuse parts of it.
 - Tested on a standard GCC toolchain.
 
-## License
-MIT (or another license of your choice).
+## 📜 License
+
+All rights reserved. This project was submitted as part of an academic course (20465, Open University of Israel).
