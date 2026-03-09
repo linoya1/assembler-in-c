@@ -1,9 +1,7 @@
 #ifndef OPCODE_TABLE_H
 #define OPCODE_TABLE_H
 #include "constants.h"
-/**
- * NAME: LINOY BITON
- * ID:211589775 */
+
 
 /**
  * Structure representing an opcode, including its name, code, and allowed addressing modes.
