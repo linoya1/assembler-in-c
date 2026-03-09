@@ -6,9 +6,6 @@
 #include "symbol_table.h"
 #include "syntax_analyzer.h"
 
-/**
- * NAME: LINOY BITON
- * ID:211589775 */
 
 /* Define dynamic data structures for instructions and data */
 
