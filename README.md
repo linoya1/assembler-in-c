@@ -271,7 +271,12 @@ The project emphasizes:
 - separation of concerns
 
 ---
+## Academic Context
 
+This project was developed as part of a **Systems Programming Laboratory** course at the Open University of Israel.  
+It implements a modular two-pass assembler written in C as part of the course requirements.
+
+---
 ## Academic Integrity Notice
 
 This repository is published for **portfolio and educational demonstration purposes only**.
