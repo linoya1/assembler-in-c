@@ -7,9 +7,7 @@
 #include "symbol_table.h"
 #include "utility.h"
 
-/**
- * NAME: LINOY BITON
- * ID:211589775 */
+
 
 typedef struct Error {
     int line_number;
