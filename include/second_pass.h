@@ -7,9 +7,7 @@
 #include "symbol_table.h"
 #include "syntax_analyzer.h"
 
-/**
- * NAME: LINOY BITON
- * ID:211589775 */
+
 
 typedef struct {
     int code_image[MAX_MEM_SIZE];
