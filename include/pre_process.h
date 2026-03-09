@@ -3,9 +3,7 @@
 
 #include "constants.h"
 #include <stdio.h>
-/**
- * NAME: LINOY BITON
- * ID:211589775 */
+
 
 /**
  * Structure representing a macro in the pre-processing stage.
