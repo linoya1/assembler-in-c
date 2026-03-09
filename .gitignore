@@ -1,0 +1,15 @@
+# Object files
+*.o
+
+# Executables
+assembler_program
+*.out
+
+# Build directories
+obj/
+
+# OS files
+.DS_Store
+
+# Editor settings
+.vscode/
