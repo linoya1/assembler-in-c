@@ -3,9 +3,7 @@
 #include "constants.h"
 #include "syntax_analyzer.h"
 
-/**
- * NAME: LINOY BITON
- * ID:211589775 */
+
 
 /**
  * @brief Checks if the given token is a valid label.
