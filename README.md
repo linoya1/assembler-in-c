@@ -1,4 +1,8 @@
-# Assembler in C - Systems Programming Project implemented in C
+# Assembler in C 
+
+A modular **two-pass assembler implemented in C**, designed as a low-level systems programming project.
+
+The assembler performs macro preprocessing, symbol table construction, syntax analysis, and machine code generation for a custom assembly language.
 
 ## Overview
 
