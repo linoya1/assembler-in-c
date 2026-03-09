@@ -4,7 +4,7 @@ A modular **two-pass assembler implemented in C**, designed as a low-level syste
 
 The assembler performs macro preprocessing, symbol table construction, syntax analysis, and machine code generation for a custom assembly language.
 
-## Overview
+## 📖 Overview
 
 This project implements a **modular two-pass assembler in C** for a custom assembly language.
 
@@ -14,7 +14,7 @@ The implementation is divided into dedicated modules for preprocessing, syntax a
 
 ---
 
-## Architecture
+## 🏗 Architecture
 
 The assembler operates in three main stages:
 
@@ -92,7 +92,7 @@ The assembler supports:
 - Error detection and reporting
 - Generation of standard output files for assembled programs
 
-## Technologies
+## 🛠 Technologies
 
 - C
 - GCC
@@ -129,7 +129,7 @@ If errors are detected during assembly, output files are removed instead of bein
 
 ---
 
-## Project Structure
+## 📂 Project Structure
 
 ```text
 assembler-in-c
@@ -146,7 +146,7 @@ assembler-in-c
 
 ---
 
-## Build
+## 🔧 Build
 
 Compile the project using:
 
@@ -174,7 +174,7 @@ make clean
 
 ---
 
-## Usage
+## ▶️ Usage
 
 Run the assembler with one or more **input base names**.
 
@@ -222,7 +222,7 @@ depending on the symbols and directives used in the source program.
 
 ---
 
-## Testing
+## 🧪 Testing
 
 The repository includes both valid and invalid test cases.
 
@@ -254,7 +254,7 @@ When errors are detected, the assembler reports descriptive error messages and a
 
 ---
 
-## Documentation
+## 📚 Documentation
 
 The codebase includes documented header files and function declarations describing:
 
