@@ -92,6 +92,26 @@ The assembler supports:
 - Error detection and reporting
 - Generation of standard output files for assembled programs
 
+## Technologies
+
+- C
+- GCC
+- Makefile
+- Linux development environment
+- Modular systems programming design
+
+## Supported Assembly Elements
+
+The assembler supports the following assembly language elements:
+
+- Labels and symbol definitions
+- Immediate, direct, and register addressing methods
+- Instruction parsing and encoding
+- Data directives
+- String directives
+- Entry and external symbol handling
+- Macro definitions and expansions
+
 ---
 
 ## Output Files
