@@ -1,172 +1,178 @@
-# Assembler in C – OU 20465
+# Assembler in C
 
-This repository contains my **Assembler project in C** for the Open University course 20465.
+## Overview
+
+This project implements a **modular two-pass assembler in C** for a custom assembly language.
+
+The assembler reads assembly source files, performs macro preprocessing, analyzes directives and instructions, builds and validates a symbol table, and generates the corresponding machine-code output files.
+
+The implementation is divided into dedicated modules for preprocessing, syntax analysis, opcode handling, symbol-table management, and second-pass encoding, reflecting a structured **systems programming** design.
+
+---
+
+## Architecture
+
+The assembler operates in three main stages:
+
+### 1. Pre-Processing
+
+The preprocessing stage scans the source file and handles macro definitions before the assembly passes begin.
+
+Responsibilities include:
+
+- Reading the original `.as` source file
+- Detecting macro declarations
+- Validating macro names
+- Storing macro bodies in a macro table
+- Expanding macro invocations
+- Generating an intermediate `.am` file
+
+### 2. First Pass
+
+The first pass scans the preprocessed file and builds the program's symbol information.
+
+Responsibilities include:
+
+- Identifying labels and symbol definitions
+- Parsing assembler directives
+- Parsing instruction structure and operands
+- Validating syntax
+- Building the symbol table
+- Calculating instruction counter (IC) and data counter (DC)
+- Detecting definition and declaration errors
+
+### 3. Second Pass
+
+The second pass re-scans the preprocessed file and generates the final encoded output.
+
+Responsibilities include:
+
+- Resolving symbol references
+- Encoding instructions into machine representation
+- Handling entry and external symbols
+- Writing the object file
+- Generating `.ent` and `.ext` files when needed
+
+---
+
+## Main Components
+
+The project is organized into dedicated modules:
+
+- `pre_process` – macro handling and `.am` file generation
+- `first_pass` – initial parsing, symbol collection, and address calculation
+- `second_pass` – final encoding and output generation
+- `syntax_analyzer` – line parsing, operand classification, and validation
+- `opcode_table` – opcode lookup and instruction metadata
+- `symbol_table` – symbol storage and lookup
+- `utility` – helper functions used across the project
+- `assembler` – main program flow and file orchestration
+
+---
+
+## Features
+
+The assembler supports:
+
+- Macro preprocessing
+- Two-pass assembly flow
+- Symbol table construction and validation
+- Instruction parsing and encoding
+- Operand type analysis
+- Opcode lookup through a dedicated opcode table
+- Support for assembler directives:
+  - `.data`
+  - `.string`
+  - `.entry`
+  - `.extern`
+- Error detection and reporting
+- Generation of standard output files for assembled programs
+
+---
+
+## Output Files
+
+For each processed source program, the assembler may generate:
+
+| File | Description |
+|------|-------------|
+| `.am` | Preprocessed assembly file after macro expansion |
+| `.ob` | Object file containing the encoded machine output |
+| `.ent` | Entry symbols file |
+| `.ext` | External symbols usage file |
+
+If errors are detected during assembly, output files are removed instead of being kept.
+
+---
 
 ## Project Structure
-A quick glance at the folders/files:
 
-```
-projectLinoyBiton/
-└── Maman14
-    ├── .vscode
-    │   └── settings.json
-    ├── assembler
-    │   ├── assembler.c
-    │   ├── assembler.h
-    │   ├── assembler.o
-    │   └── assembler_program
-    ├── include
-    │   ├── constants.h
-    │   ├── first_pass.h
-    │   ├── opcode_table.h
-    │   ├── pre_process.h
-    │   ├── second_pass.h
-    │   ├── symbol_table.h
-    │   ├── syntax_analyzer.h
-    │   └── utility.h
-    ├── invalid_tests
-    │   ├── error_test_update.png
-    │   ├── errors_test_updated.am
-    │   ├── errors_test_updated.as
-    │   ├── file.kkk
-    │   ├── filekkk-nameincorrent.png
-    │   ├── incorrentoperands.am
-    │   ├── incorrentoperands.as
-    │   ├── incorrentoperands.png
-    │   ├── invalid1-5.png
-    │   ├── invalid1.as
-    │   ├── invalid2.as
-    │   ├── invalid3.as
-    │   ├── invalid4.as
-    │   ├── invalid5.as
-    │   ├── invalid6.am
-    │   ├── invalid6.as
-    │   ├── invalid6.png
-    │   ├── invalidtest1.as
-    │   └── invalidtest1.png
-    ├── makefile
-    ├── name&id
-    ├── obj
-    │   ├── first_pass.o
-    │   ├── opcode_table.o
-    │   ├── pre_process.o
-    │   ├── second_pass.o
-    │   ├── symbol_table.o
-    │   ├── syntax_analyzer.o
-    │   └── utility.o
-    ├── src
-    │   ├── first_pass.c
-    │   ├── first_pass.o
-    │   ├── opcode_table.c
-    │   ├── opcode_table.o
-    │   ├── pre_process.c
-    │   ├── pre_process.o
-    │   ├── second_pass.c
-    │   ├── second_pass.o
-    │   ├── symbol_table.c
-    │   ├── symbol_table.o
-    │   ├── syntax_analyzer.c
-    │   ├── syntax_analyzer.o
-    │   ├── utility.c
-    │   └── utility.o
-    └── tests
-        ├── assembly_mac.am
-        ├── assembly_mac.as
-        ├── assembly_mac.ob
-        ├── bacis_code_test.am
-        ├── bacis_code_test.as
-        ├── bacis_code_test.ob
-        ├── complex_assembly_test.am
-        ├── complex_assembly_test.as
-        ├── complex_assembly_test.ent
-        ├── complex_assembly_test.ext
-        ├── complex_assembly_test.ob
-        ├── fib_sequence.am
-        ├── fib_sequence.as
-        ├── fib_sequence.ent
-        ├── fib_sequence.ext
-        ├── fib_sequence.ob
-        ├── guidance_test.am
-        ├── guidance_test.as
-        ├── guidance_test.ent
-        ├── guidance_test.ob
-        ├── ps.am
-        ├── ps.as
-        ├── ps.ent
-        ├── ps.ext
-        ├── ps.ob
-        ├── test.am
-        └── test.as
-```
-
-
-
-# Assembler in C – OU 20465
-
-This project was developed as part of the **"Systems Programming Lab (20465)"** course at the Open University of Israel.
-The assignment (Maman 14) required implementing an **Assembler in C** that translates a simplified assembly language into machine code, including full handling of symbols, macros, and errors.
-
----
-
-## 📂 Project Structure
-
-```
-src/            # Source code (.c files)
-include/        # Header files (.h files)
-assembler/      # Main assembler module
-tests/          # Example input/output files
-invalid_tests/  # Invalid input tests (error handling)
-makefile        # Build instructions
+```text
+assembler-in-c
+│
+├── assembler/          # Main program entry and executable target
+├── include/            # Header files
+├── src/                # Core source modules
+├── obj/                # Compiled object files
+├── tests/              # Valid assembly test inputs
+├── invalid_tests/      # Invalid programs for error handling tests
+├── makefile            # Build configuration
+└── README.md
 ```
 
 ---
 
-## ⚙️ Build Instructions
+## Build
 
-The project must be compiled on **Linux (Ubuntu)** with `gcc`, using the following flags (as required by the course):
+Compile the project using:
 
 ```bash
-make            # uses the provided makefile
+make
 ```
 
-Or manually:
+The provided `makefile` builds the executable:
+
+```text
+assembler/assembler_program
+```
+
+Compilation uses GCC with strict flags:
 
 ```bash
-gcc -ansi -pedantic -Wall -o assembler src/*.c assembler/assembler.c
+-Wall -ansi -pedantic -g
 ```
 
-> The code compiles **without warnings**.
+To remove compiled files:
+
+```bash
+make clean
+```
 
 ---
 
-## ▶️ Running the Assembler
+## Usage
 
-The assembler accepts one or more assembly source files (`.as`) as input.
-For each input file, it generates the appropriate output files:
-
-* **`.ob`** – Object file (machine code)
-* **`.ent`** – Entries file (labels declared as `.entry`)
-* **`.ext`** – Externals file (labels declared as `.extern`)
+Run the assembler with one or more **input base names**.
 
 Example:
 
 ```bash
-./assembler tests/example.as
+./assembler/assembler_program tests/fib_sequence
 ```
 
-Output:
+The program appends the `.as` extension internally, so the input should be provided **without** `.as`.
 
-```
-example.ob
-example.ent
-example.ext
+You can also run multiple files in a single command:
+
+```bash
+./assembler/assembler_program tests/fib_sequence tests/assembly_mac tests/guidance_test
 ```
 
 ---
 
-## 📝 Example
+## Example
 
-Input file (`tests/fib_sequence.as`):
+Example input file:
 
 ```asm
 MAIN:   mov r3, LENGTH
@@ -174,39 +180,71 @@ MAIN:   mov r3, LENGTH
         cmp r2, #-1
         bne END
         stop
+
 LENGTH: .data 6,-9,15
 END:    stop
 ```
 
-After running:
+After assembly, the program may generate:
 
-* `fib_sequence.ob` – contains translated machine code
-* `fib_sequence.ent` – contains entry labels (if any)
-* `fib_sequence.ext` – contains external labels (if any)
+```text
+fib_sequence.am
+fib_sequence.ob
+fib_sequence.ent
+fib_sequence.ext
+```
 
----
-
-## 📖 Features Implemented
-
-* **Pre-processor**: macro expansion before assembly.
-* **Two-pass assembler**:
-
-  1. First pass – build symbol table, validate syntax.
-  2. Second pass – encode instructions and resolve labels.
-* **Symbol table management** (internal, external, entry).
-* **Error detection** with detailed messages.
-* **Support for directives**: `.data`, `.string`, `.entry`, `.extern`.
-* **Support for addressing methods** and instruction set defined in the assignment.
+depending on the symbols and directives used in the source program.
 
 ---
 
-## 📦 Notes
+## Testing
 
-* All tests provided with the project (`tests/`, `invalid_tests/`) demonstrate the assembler’s correctness.
-* Output files (`*.ob`, `*.ent`, `*.ext`) are ignored by Git (see `.gitignore`).
+The repository includes both valid and invalid test cases.
+
+### Valid Tests
+
+The `tests/` directory contains assembly programs used to verify:
+
+- instruction handling
+- directives
+- macro expansion
+- symbol resolution
+- output-file generation
+
+### Invalid Tests
+
+The `invalid_tests/` directory contains intentionally incorrect inputs used to validate:
+
+- syntax error detection
+- invalid operands
+- malformed files
+- incorrect directives or symbol usage
+
+This helps verify that the assembler handles both correct and erroneous inputs robustly.
 
 ---
 
-## 📜 License
+## Documentation
 
-All rights reserved. This project was submitted as part of an academic course (20465, Open University of Israel).
+The codebase includes documented header files and function declarations describing:
+
+- module responsibilities
+- function purpose
+- input and output behavior
+- internal data structures
+
+The project emphasizes:
+
+- modular design
+- readability
+- maintainability
+- separation of concerns
+
+---
+
+## Academic Integrity Notice
+
+This repository is published for **portfolio and educational demonstration purposes only**.
+
+Students currently taking similar courses should **not copy, submit, or reuse this code as their own academic work**.
