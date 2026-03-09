@@ -212,16 +212,21 @@ The `tests/` directory contains assembly programs used to verify:
 - symbol resolution
 - output-file generation
 
+
 ### Invalid Tests
 
-The `invalid_tests/` directory contains intentionally incorrect inputs used to validate:
+The `invalid_tests/` directory contains intentionally incorrect assembly programs used to validate the assembler's **error handling mechanisms**.
 
-- syntax error detection
-- invalid operands
-- malformed files
-- incorrect directives or symbol usage
+These tests verify that the assembler correctly detects and reports errors such as:
 
-This helps verify that the assembler handles both correct and erroneous inputs robustly.
+- invalid instruction syntax
+- illegal operands
+- undefined symbols
+- incorrect directive usage
+- malformed assembly files
+
+When errors are detected, the assembler reports descriptive error messages and avoids generating output files.
+
 
 ---
 
