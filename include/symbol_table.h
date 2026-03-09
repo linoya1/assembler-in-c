@@ -5,9 +5,7 @@
 #include "syntax_analyzer.h"
 #include "opcode_table.h"
 
-/**
- * NAME: LINOY BITON
- * ID:211589775 */
+
 
 typedef enum {
     extern_symbol,
