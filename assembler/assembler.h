@@ -7,7 +7,6 @@
 
 /**
  * NAME: LINOY BITON
- * ID:211589775
  * @brief The main function of the assembler program.
  *
  * This function serves as the entry point for the assembler program, 
