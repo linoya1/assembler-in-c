@@ -22,8 +22,6 @@ Before running the assembler, make sure the following tools are installed on you
 - **GNU Make**
 - **Linux / Unix-like environment** (Ubuntu recommended)
 
-The project was developed and tested on **Ubuntu Linux**, but it should also run on other Unix-like environments such as **WSL** or **macOS** with GCC installed.
-
 ---
 
 ### 📦 Installation
@@ -239,12 +237,6 @@ Example:
 ```
 
 The program appends the `.as` extension internally, so the input should be provided **without** `.as`.
-
-You can also run multiple files in a single command:
-
-```bash
-./assembler/assembler_program tests/fib_sequence tests/assembly_mac tests/guidance_test
-```
 
 ---
 
