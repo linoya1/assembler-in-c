@@ -12,6 +12,60 @@ The assembler reads assembly source files, performs macro preprocessing, analyze
 
 The implementation is divided into dedicated modules for preprocessing, syntax analysis, opcode handling, symbol-table management, and second-pass encoding, reflecting a structured **systems programming** design.
 
+## ⚙️ Getting Started
+
+### ✔️ Prerequisites
+
+Before running the assembler, make sure the following tools are installed on your system:
+
+- **GCC compiler**
+- **GNU Make**
+- **Linux / Unix-like environment** (Ubuntu recommended)
+
+The project was developed and tested on **Ubuntu Linux**, but it should also run on other Unix-like environments such as **WSL** or **macOS** with GCC installed.
+
+---
+
+### 📦 Installation
+
+1. Clone the repository:
+
+```bash
+git clone https://github.com/linoya1/assembler-in-c.git
+```
+
+2. Move into the project directory:
+
+```bash
+cd assembler-in-c
+```
+
+3. Compile the project using the provided Makefile:
+
+```bash
+make
+```
+
+After compilation, the assembler executable will be generated at:
+
+```
+assembler/assembler_program
+```
+
+---
+
+### ▶️ Running the Program
+
+Run the assembler by providing one or more **input base names** of assembly source files.
+
+Example:
+
+```bash
+./assembler/assembler_program <input_file_name>
+```
+
+The assembler automatically appends the `.as` extension to the provided file name.
+
 ---
 
 ## 🏗 Architecture
